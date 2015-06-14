@@ -10,14 +10,13 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class RadialNetwork {
-	public static final String SET_FILENAME = "zbior1.txt";
 	private Neuron output;
 	private List<RadialNeuron> hidden;
 	private double[][] trainingSet;
 	private List<Integer> indexes;
 	
-	public RadialNetwork(int neurons, double learningParam) throws IOException {
-		trainingSet = getTrainingSetFromFile(SET_FILENAME);
+	public RadialNetwork(int neurons, double learningParam, String trainingSetFile) throws IOException {
+		trainingSet = getTrainingSetFromFile(trainingSetFile);
 		output = new Neuron(neurons, learningParam, 0);
 		hidden = new ArrayList<RadialNeuron>();
 		indexes = new ArrayList<Integer>();

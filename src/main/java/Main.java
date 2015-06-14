@@ -21,16 +21,18 @@ public class Main {
 	private static final String output = "output";
 	private static final double learningFactory = 0.5;
 	private static final int mainIterations = 10;
-	private static final int testLoops = 5;
+	private static final int hiddenLayerNeurons = 5;
+	private static final String trainingSetFile = "zbior1.txt";
 
 	public static void main(String[] args) throws IOException {
-		for(int j = 1; j <= testLoops; j++){
+		for(int j = 1; j <= hiddenLayerNeurons; j++){
 			for(int i = 0; i < mainIterations; i++){
-				testNetwork(j, learningFactory, i);
+				testNetwork(j, learningFactory, i, trainingSetFile);
 			}
 		}
 		System.out.println("Koniec");
 	}
+	
 	private static void drawErrorsChart(double error[][], int count, int testNumber, double learningParam){
 		PlotStyle errorStyle = new PlotStyle();
 		errorStyle.setStyle(Style.LINES);
@@ -69,10 +71,10 @@ public class Main {
 		}
 	}
 
-	public static void testNetwork(int count, double learningParam, int testNumber) throws IOException{
+	public static void testNetwork(int count, double learningParam, int testNumber, String trainingSetFile) throws IOException{
 		ArrayList<double[]> errors = new ArrayList<double[]>();
 
-		RadialNetwork network = new RadialNetwork(count, learningParam);
+		RadialNetwork network = new RadialNetwork(count, learningParam, trainingSetFile);
 		double[][] trainingSet = network.getTrainingSet();
 
 		File dir = new File(output);
