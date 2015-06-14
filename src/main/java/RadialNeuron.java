@@ -1,4 +1,3 @@
-
 public class RadialNeuron {
 	private double c;
 	private double param;

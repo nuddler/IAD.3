@@ -9,31 +9,22 @@ import java.util.Locale;
 import java.util.Random;
 import java.util.Scanner;
 
-
 public class RadialNetwork {
-	public static final String FILE_NAME = "set1.txt";
-	
+	public static final String SET_FILENAME = "zbior1.txt";
 	private Neuron output;
 	private List<RadialNeuron> hidden;
 	private double[][] trainingSet;
 	private List<Integer> indexes;
 	
 	public RadialNetwork(int neurons, double learningParam) throws IOException {
-
-		trainingSet = getTrainingSetFromFile(FILE_NAME);
-
+		trainingSet = getTrainingSetFromFile(SET_FILENAME);
 		output = new Neuron(neurons, learningParam, 0);
-
 		hidden = new ArrayList<RadialNeuron>();
-
 		indexes = new ArrayList<Integer>();
 
 		for(int i = 0; i < neurons; i++){
-
 			Random random = new Random();
-
 			boolean added = false;
-
 			while(added == false) {
 				int index = random.nextInt(trainingSet.length);
 				if (indexNotInList(indexes, index)){
@@ -99,7 +90,6 @@ public class RadialNetwork {
 		return nearest;
 	}
 
-	@SuppressWarnings("resource")
 	private double[][] getTrainingSetFromFile(String filePath) throws IOException{
 		BufferedReader reader = new BufferedReader(new FileReader(filePath));
 		int lines = 0;
@@ -130,7 +120,6 @@ public class RadialNetwork {
 		return trainingSet;
 	}
 
-	/* GETTERS AND SETTERS */
 	public Neuron getOutput() {
 		return output;
 	}

@@ -1,7 +1,6 @@
 import java.util.Random;
 
 public class Neuron {
-
 	private double learningParam; 
 	private double momentumParam;
 	private double[] weights;
@@ -26,12 +25,10 @@ public class Neuron {
 	}
 	
 	public Neuron (int inputs, double learningParam, double momentumParam){
-
 		Random r = new Random();
 		this.learningParam = learningParam; 
 		this.momentumParam = momentumParam;
 		this.weights = new double[inputs];
-			
 		for (int i = 0; i < weights.length; i++){
 			weights[i] = r.nextDouble();
 		}
